@@ -29,7 +29,7 @@ export const getUsers = async (
   res: Response
 ): Promise<void> => {
   try {
-    const users = await User.find();
+    const users = await userService.getUsers(req);
     res.json(users);
 
   } catch (error) {
