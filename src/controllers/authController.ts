@@ -60,3 +60,28 @@ export const login = async (
     });
   }
 };
+
+export const uploadProfile = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    if (!req.file) {
+      res.status(400).json({
+        message: 'No file uploaded'
+      });
+      return;
+    }
+
+    console.log(req.file);
+
+    res.json({
+        file: req.file
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      message: 'Failed to upload profile image'
+    });
+  }
+};

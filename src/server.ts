@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 import connectDB from './config/db';
 import { logger } from './middlewares/logger';
-import { validateUser, validateOrder, validateLogin } from './middlewares/validateData';
+import { validateUser, validateOrder } from './middlewares/validateData';
 import morgan from 'Morgan';
 
 import userRoute from './routes/userRoute';
@@ -22,7 +22,7 @@ connectDB();
 
 app.use('/users', validateUser, userRoute);
 app.use('/orders', validateOrder, ordersRoute);
-app.use('/auth', validateLogin, authRoute);
+app.use('/auth', authRoute);
 
 const PORT = process.env.PORT || 3000;
 
